@@ -1,0 +1,30 @@
+dn: uid=.,dc=sumit,dc=sum,dc=ba
+uid: .
+
+dn: uid=dvasic,dc=sumit,dc=sum,dc=ba
+uid: dvasic
+
+dn: uid=tpapac,dc=sumit,dc=sum,dc=ba
+uid: tpapac
+
+dn: uid=test.test,dc=sumit,dc=sum,dc=ba
+uid: test.test
+
+dn: uid=test.test1,dc=sumit,dc=sum,dc=ba
+uid: test.test1
+
+dn: uid=robert.rozic,dc=sumit,dc=sum,dc=ba
+uid: robert.rozic
+
+dn: uid=robert.rozic1,dc=sumit,dc=sum,dc=ba
+uid: robert.rozic1
+
+dn: uid=robert.rozic2,dc=sumit,dc=sum,dc=ba
+uid: robert.rozic2
+
+dn: uid=robert.rozic3,dc=sumit,dc=sum,dc=ba
+uid: robert.rozic3
+
+dn: uid=robert.rozic4,dc=sumit,dc=sum,dc=ba
+uid: robert.rozic4
+

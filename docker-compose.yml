@@ -1,0 +1,52 @@
+version: "3.7"
+services:
+    app:
+        build:
+            args: 
+                user: dvasic
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: api-osaa
+        container_name: api-osaa-app
+        restart: unless-stopped
+        working_dir: /srv/www/api-osaa
+        volumes:
+            - ./:/srv/www/api-osaa
+        networks:
+            - api-osaa
+
+    db:
+        image: mysql:5.7
+        container_name: api-osaa-db
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+        networks:
+            - api-osaa
+
+    nginx:
+        image: nginx:1.17-alpine
+        container_name: api-osaa-nginx
+        restart: unless-stopped
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./:/srv/www/api-osaa
+            - ./docker-compose/nginx:/etc/nginx/conf.d
+            - ./docker-compose/certs:/etc/nginx/certs/osaa/
+        networks:
+            - api-osaa
+
+networks:
+    api-osaa:
+        driver: bridge
+        
